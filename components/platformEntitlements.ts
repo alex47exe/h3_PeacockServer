@@ -22,6 +22,23 @@ import type { NamespaceEntitlementEpic, RequestWithJwt } from "./types/types"
 import { getUserData } from "./databaseHandler"
 import { log, LogLevel } from "./loggingInterop"
 
+export const H1_EPIC_ENTITLEMENTS = [
+    "0a73eaedcac84bd28b567dbec764c5cb", 
+    "81aecb49a60b47478e61e1cbd68d63c5",
+]
+
+export const H1_STEAM_ENTITLEMENTS = [
+    "439870", 
+    "439890", 
+    "440930", 
+    "440940", 
+    "440960", 
+    "440961", 
+    "440962", 
+    "505180", 
+    "588780",
+]
+
 export const H3_EPIC_ENTITLEMENTS = [
     // DUBAI:
     "06d4d61bbb774ca99c1661bee04fbde0",
@@ -87,6 +104,36 @@ export const H3_EPIC_ENTITLEMENTS = [
     "6cdf07da030d4f66acd50eaf3cd234c7",
 ]
 
+export const H3_STEAM_ENTITLEMENTS = [
+    "2973650",
+    "2828470",
+    "2475260",
+    "2184791",
+    "2184790",
+    "1843460",
+    "1829605",
+    "1829604",
+    "1829603",
+    "1829602",
+    "1829601",
+    "1829600",
+    "1829596",
+    "1829595",
+    "1829594",
+    "1829593",
+    "1829592",
+    "1829591",
+    "1829590",
+    "1829587",
+    "1829586",
+    "1829585",
+    "1829584",
+    "1829583",
+    "1829582",
+    "1829581",
+    "1829580",
+]
+
 export const H2_STEAM_ENTITLEMENTS = [
     "863550", // Hitman 2
     "950540", // Hitman - Legacy: Paris
@@ -135,6 +182,8 @@ export const STEAM_NAMESPACE_SCPC = "783781"
 export const STEAM_NAMESPACE_2018 = "863550"
 export const EPIC_NAMESPACE_2021 = "ed55aa5edc5941de92fd7f64de415793"
 export const STEAM_NAMESPACE_2021 = "1659040"
+
+export const ALL_ENTITLEMENTS = [STEAM_NAMESPACE_2016, EPIC_NAMESPACE_2016, STEAM_NAMESPACE_SCPC, STEAM_NAMESPACE_2018, EPIC_NAMESPACE_2021, STEAM_NAMESPACE_2021].concat(H1_EPIC_ENTITLEMENTS).concat(H1_STEAM_ENTITLEMENTS).concat(H2_STEAM_ENTITLEMENTS).concat(H3_EPIC_ENTITLEMENTS).concat(H3_STEAM_ENTITLEMENTS)
 
 export const SCPC_ENTITLEMENTS = [STEAM_NAMESPACE_2016, "783781"]
 
