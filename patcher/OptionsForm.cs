@@ -62,7 +62,8 @@ namespace HitmanPatcher
                         DisableForceOfflineOnFailedDynamicResources = dynResources.Checked,
                         DisableCertPinning = true,
                         SetCustomConfigDomain = true,
-                        AlwaysSendAuthHeader = true
+                        AlwaysSendAuthHeader = true,
+                        DisableSteamCheck = true
                     },
                     darkModeEnabled = darkModeBox.Checked,
                     startInTray = startInTray,

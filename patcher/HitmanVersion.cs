@@ -34,7 +34,7 @@ namespace HitmanPatcher
 
     public class HitmanVersion
     {
-        public Patch[] certpin, authheader, configdomain, protocol, dynres_noforceoffline;
+        public Patch[] certpin, authheader, configdomain, protocol, dynres_noforceoffline, steamcheck;
 
         private static Dictionary<uint, string> timestampMap = new Dictionary<uint, string>();
 

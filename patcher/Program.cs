@@ -32,7 +32,8 @@ namespace HitmanPatcher
                     DisableCertPinning = true,
                     DisableForceOfflineOnFailedDynamicResources = o.OptionalDynRes,
                     SetCustomConfigDomain = true,
-                    UseHttp = o.UseHttp
+                    UseHttp = o.UseHttp,
+                    DisableSteamCheck = !o.DontPatchSteam
                 });
             }
             else
