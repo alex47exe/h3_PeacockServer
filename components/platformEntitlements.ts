@@ -107,6 +107,7 @@ export const H3_EPIC_ENTITLEMENTS = [
 ]
 
 export const H3_STEAM_ENTITLEMENTS = [
+    "3110360",
     "2973650",
     "2828470",
     "2475260",
