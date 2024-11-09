@@ -1,6 +1,6 @@
 {
     "name": "@peacockproject/monorepo",
-    "version": "8.0.0-dev",
+    "version": "8.0.0-alpha.3",
     "private": true,
     "license": "AGPL-3.0",
     "scripts": {
@@ -44,9 +44,10 @@
         "side-channel": "npm:@nolyfill/side-channel@^1"
     },
     "dependencies": {
-        "@peacockproject/statemachine-parser": "^6.1.0",
+        "@peacockproject/statemachine-parser": "^6.2.0",
         "@yarnpkg/fslib": "^3.1.0",
         "@yarnpkg/libzip": "^3.1.0",
+        "atomically": "^2.0.3",
         "axios": "^1.7.4",
         "body-parser": "*",
         "clipanion": "^4.0.0-rc.3",
@@ -105,7 +106,7 @@
         "winston-daily-rotate-file": "^5.0.0"
     },
     "engines": {
-        "node": "18.x || 20.x"
+        "node": "20.x || 22.x"
     },
     "workspaces": [
         "webui",
@@ -113,5 +114,5 @@
         "packaging/eslint",
         "tests"
     ],
-    "packageManager": "yarn@4.4.0"
+    "packageManager": "yarn@4.5.1"
 }

@@ -410,6 +410,16 @@ export type MissionStory = {
     Image: string
 }
 
+export type PlayerProfileLocation = {
+    LocationId: string
+    Xp: number
+    ActionXp: number
+    LocationProgression?: {
+        Level: number
+        MaxLevel: number
+    }
+}
+
 export type PlayerProfileView = {
     SubLocationData: {
         ParentLocation: Unlockable
@@ -423,17 +433,10 @@ export type PlayerProfileView = {
     PlayerProfileXp: {
         Total: number
         Level: number
+        Sublocations?: PlayerProfileLocation[]
         Seasons: {
             Number: number
-            Locations: {
-                LocationId: string
-                Xp: number
-                ActionXp: number
-                LocationProgression?: {
-                    Level: number
-                    MaxLevel: number
-                }
-            }[]
+            Locations: PlayerProfileLocation[]
         }[]
     }
 }
@@ -1313,10 +1316,24 @@ export interface CompiledChallengeRuntimeData {
 export type LoadoutSavingMechanism = "PROFILES" | "LEGACY"
 export type ImageLoadingStrategy = "SAVEASREQUESTED" | "ONLINE" | "OFFLINE"
 
-export type Flags = Record<
-    string,
-    { desc: string; default: boolean | string | number }
->
+export type Flag = {
+    category?: string
+    title: string
+    desc: string
+    possibleValues?: string[]
+    default: boolean | string | number
+    showIngame?: boolean
+    requiresGameRestart?: boolean
+    requiresPeacockRestart?: boolean
+}
+
+export type FlagSection = {
+    title: string
+    desc: string
+    flags: Record<string, Flag>
+}
+
+export type Flags = Record<string, FlagSection>
 
 /**
  * A "hit" object.

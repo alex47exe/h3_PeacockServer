@@ -33,7 +33,7 @@ import { SyncBailHook, SyncHook } from "../hooksImpl"
 const menuSystemPreRouter = Router()
 const menuSystemRouter = Router()
 
-// /resources-8-16/
+// /resources-8-17/
 
 /**
  * A class for managing the menu system's fetched JSON data.
@@ -342,6 +342,13 @@ export class MenuSystemDatabase {
                         "$if $eq (0,0)": {
                             $then: true,
                             $else: true,
+                        },
+                    }
+                case "/data/ispeacockdev.json":
+                    return {
+                        "$if $eq (0,0)": {
+                            $then: PEACOCK_DEV,
+                            $else: PEACOCK_DEV,
                         },
                     }
                 case "/pages/hub/modals/peacock/dynresmodal.json":

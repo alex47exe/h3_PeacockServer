@@ -75,7 +75,8 @@ import { multiplayerRouter } from "./multiplayer/multiplayerService"
 import { multiplayerMenuDataRouter } from "./multiplayer/multiplayerMenuData"
 import { liveSplitManager } from "./livesplit/liveSplitManager"
 import { cheapLoadUserData, setupFileStructure } from "./databaseHandler"
-import { getFlag } from "./flags"
+import { getFlag, saveFlags } from "./flags"
+import { initializePeacockMenu } from "./menus/settings"
 
 const host = process.env.HOST || "0.0.0.0"
 const port = process.env.PORT || 80
@@ -306,7 +307,7 @@ app.use(
                     break
                 case "fghi4567xQOCheZIin0pazB47qGUvZw4":
                 case STEAM_NAMESPACE_2021:
-                    req.serverVersion = "8-16"
+                    req.serverVersion = "8-17"
                     break
                 default:
                     res.status(400).json({ message: "no game data" })
@@ -439,7 +440,7 @@ app.use(
             }
 
             if (
-                ["6-74", "7-3", "7-17", "8-16"].includes(
+                ["6-74", "7-3", "7-17", "8-17"].includes(
                     <string>req.serverVersion,
                 )
             ) {
@@ -511,6 +512,9 @@ export async function startServer(options: {
         await loadouts.init()
         await controller.boot(options.pluginDevHost)
 
+        // all plugins had a chance to provide their flags now
+        saveFlags()
+
         const httpServer = http.createServer(app)
 
         // @ts-expect-error Non-matching method sig
@@ -523,6 +527,8 @@ export async function startServer(options: {
 
         // initialize livesplit
         await liveSplitManager.init()
+
+        initializePeacockMenu()
 
         return
     } catch (e) {

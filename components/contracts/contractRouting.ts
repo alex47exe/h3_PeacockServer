@@ -70,7 +70,10 @@ contractRoutingRouter.post(
             return // user sent some nasty info
         }
 
-        const contractData = controller.resolveContract(req.body.id)
+        const contractData = controller.resolveContract(
+            req.body.id,
+            req.gameVersion,
+        )
 
         if (!contractData) {
             log(
@@ -102,10 +105,8 @@ contractRoutingRouter.post(
                       req.gameVersion,
                   )
                 : {}),
-            ...(loadoutData || {}),
-            ...{
-                OpportunityData: getContractOpportunityData(req, contractData),
-            },
+            ...loadoutData,
+            OpportunityData: getContractOpportunityData(req, contractData),
         }
 
         // Edit usercreated contract data HERE
@@ -266,6 +267,7 @@ contractRoutingRouter.post(
 
         const contractData = controller.resolveContract(
             sessionDetails.contractId,
+            sessionDetails.gameVersion,
         )
 
         if (!contractData) {
@@ -347,7 +349,10 @@ contractRoutingRouter.post(
     jsonMiddleware(),
     // @ts-expect-error Has jwt props.
     (req: RequestWithJwt<never, { contractId: string }>, res) => {
-        const contract = controller.resolveContract(req.body.contractId)
+        const contract = controller.resolveContract(
+            req.body.contractId,
+            req.gameVersion,
+        )
 
         if (!contract) {
             res.status(400).send("contract not found")

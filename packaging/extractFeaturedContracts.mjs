@@ -29,7 +29,7 @@ import axios from "axios"
  * @param gameVersion
  * @returns {Promise<*>}
  */
-async function fetchHitsCategoryPage(axiosClient, type, page, gameVersion) {
+async function fetchHitsCategoryPage(axiosClient, type, page) {
     console.log(`${pc.blue`Fetching hits category `}${type} page ${page}...`)
 
     const url = `/profiles/page/HitsCategory?page=${page}&type=${type}&mode=dataonly`
@@ -71,7 +71,7 @@ async function extract(jwt, gameVersion) {
             "User-Agent": "G2 Http/1.0 (Windows NT 10.0; DX12/1; d3d12/1)",
             "Content-Type": "application/json",
             Accept: "application/json, text/*, image/*, application/json",
-            Version: gameVersion === "h1" ? "6.74.0" : "8.15.0",
+            Version: gameVersion === "h1" ? "6.74.0" : "8.17.0",
             Authorization: `bearer ${jwt}`,
         },
     })
